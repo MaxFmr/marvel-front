@@ -1,1 +1,52 @@
 /* Other rules */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  border: springgreen 2px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+header img {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: rgb(66, 62, 62) 3px solid;
+}
+
+.search-bar {
+  width: 300px;
+  background: rgb(66, 62, 62);
+  color: white;
+  margin-left: 791px;
+}
+.card {
+  border: tomato solid 2px;
+  height: 700px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card img {
+  height: 500px;
+  width: 400px;
+  object-fit: cover;
+}
