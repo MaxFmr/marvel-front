@@ -6,14 +6,14 @@ const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [searchByName, setSearchByName] = useState("");
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/characters?name=${searchByName}`
+          `http://localhost:3000/characters?name=${searchByName}&skip=${skip}`
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -21,12 +21,13 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [searchByName]);
+  }, [searchByName, skip]);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
     <>
+      <button onClick={() => setSkip(skip + 100)}>+</button>
       <input
         type="text"
         onChange={(event) => setSearchByName(event.target.value)}
