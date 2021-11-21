@@ -10,7 +10,9 @@ const Albums = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/comics/${id}`);
+        const response = await axios.get(
+          `https://marvelbymax.herokuapp.com/comics/${id}`
+        );
         console.log(response.data);
         setData(response.data);
         setIsLoading(false);

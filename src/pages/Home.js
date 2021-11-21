@@ -14,7 +14,7 @@ const Home = ({ favoris }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/characters?name=${searchByName}&skip=${skip}`
+          `https://marvelbymax.herokuapp.com/characters?name=${searchByName}&skip=${skip}`
         );
         setData(response.data);
         setIsLoading(false);

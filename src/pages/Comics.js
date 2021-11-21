@@ -13,7 +13,7 @@ const Comics = ({ id }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/comics/?title=${searchByName}&skip=${skip}`
+          `https://marvelbymax.herokuapp.com/comics/?title=${searchByName}&skip=${skip}`
         );
         console.log(response.data);
         setData(response.data);
