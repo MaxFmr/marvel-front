@@ -1,5 +1,5 @@
 import logo from "../img/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,7 +13,10 @@ const Header = () => {
       >
         Tous les comics Marvel
       </button>
-      <img src={logo} alt="" />
+      <Link to="/">
+        <img src={logo} alt="" />
+      </Link>
+
       <button
         onClick={() => {
           navigate("/");

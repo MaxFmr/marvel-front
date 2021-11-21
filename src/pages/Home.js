@@ -9,6 +9,7 @@ const Home = ({ favoris }) => {
   const [skip, setSkip] = useState(0);
   const [fav, setFav] = useState([]);
   const [page, setPage] = useState(1);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +24,7 @@ const Home = ({ favoris }) => {
       }
     };
     fetchData();
-  }, [searchByName, skip]);
+  }, [searchByName, skip, clicked]);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -33,7 +34,7 @@ const Home = ({ favoris }) => {
         <input
           type="text"
           onChange={(event) => setSearchByName(event.target.value)}
-          placeholder=" 🔎 Recherchez votre héro Marvel préféré !"
+          placeholder=" 🔎 Retrouvez votre héro Marvel préféré !"
         />
       </div>
 
@@ -50,8 +51,10 @@ const Home = ({ favoris }) => {
                   // mise à jour du state avec la copie
                   setFav(newTab);
                   sessionStorage.setItem("favoris", JSON.stringify(fav));
-
-                  console.log(favoris);
+                  setClicked(true);
+                  alert(
+                    `Vous avez ajouté${characters.name} à vos favoris, il y restera le temps de votre navigation sur cette page.`
+                  );
                 }}
               >
                 Ajouter aux favoris

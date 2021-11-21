@@ -33,7 +33,7 @@ const Comics = ({ id }) => {
         <input
           type="text"
           onChange={(event) => setSearchByName(event.target.value)}
-          placeholder=" 🔎 Recherchez votre comic Marvel préféré !"
+          placeholder=" 🔎 Retrouvez votre comic Marvel préféré !"
         />
       </div>
 
@@ -50,6 +50,9 @@ const Comics = ({ id }) => {
                   // mise à jour du state avec la copie
                   setFav(newTab);
                   sessionStorage.setItem("favoris", JSON.stringify(fav));
+                  alert(
+                    `Vous avez ajouté${comics.title} à vos favoris, il y restera le temps de votre navigation sur cette page.`
+                  );
                 }}
               >
                 Ajouter aux favoris
