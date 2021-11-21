@@ -36,6 +36,10 @@ const Home = ({ favoris }) => {
           onChange={(event) => setSearchByName(event.target.value)}
           placeholder=" 🔎 Retrouvez votre héro Marvel préféré !"
         />
+        <p>
+          Un click 🖱 sur l'image vous indiquera les albums dans lesquels le
+          personnage apparait.
+        </p>
       </div>
 
       <div className="container">
