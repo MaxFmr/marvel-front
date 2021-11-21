@@ -37,7 +37,7 @@ const Home = ({ favoris }) => {
           placeholder=" 🔎 Retrouvez votre héro Marvel préféré !"
         />
         <p>
-          Un click 🖱 sur l'image vous indiquera les albums dans lesquels le
+          🖱 Un click sur l'image vous indiquera les albums dans lesquels le
           personnage apparait.
         </p>
       </div>
