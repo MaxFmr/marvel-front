@@ -33,7 +33,7 @@ const Comics = ({ id }) => {
         <input
           type="text"
           onChange={(event) => setSearchByName(event.target.value)}
-          placeholder="Recherchez votre héro Marvel préféré !"
+          placeholder=" 🔎 Recherchez votre comic Marvel préféré !"
         />
       </div>
 

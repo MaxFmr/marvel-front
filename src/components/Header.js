@@ -5,7 +5,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header>
+    <header className="container">
       <button
         onClick={() => {
           navigate("/comics");
