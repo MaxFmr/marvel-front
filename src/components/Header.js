@@ -1,20 +1,33 @@
 import logo from "../img/logo.png";
-import { Link } from "react-router-dom";
-// import Favoris from "../pages/Favoris";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header>
-      <Link to="/comics">
-        <button>Tous les comics Marvel</button>
-      </Link>
+      <button
+        onClick={() => {
+          navigate("/comics");
+        }}
+      >
+        Tous les comics Marvel
+      </button>
       <img src={logo} alt="" />
-      <Link to="/">
-        <button>Les Heros Marvel</button>
-      </Link>
-      <Link to="/favoris">
-        <button>Mes favoris</button>
-      </Link>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Les Heros Marvel
+      </button>
+      <button
+        onClick={() => {
+          navigate("/favoris");
+        }}
+      >
+        Mes favoris
+      </button>
     </header>
   );
 };

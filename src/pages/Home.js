@@ -33,7 +33,7 @@ const Home = ({ favoris }) => {
         <input
           type="text"
           onChange={(event) => setSearchByName(event.target.value)}
-          placeholder="Rerchez votre héro Marvel préféré !"
+          placeholder="Recherchez votre héro Marvel préféré !"
         />
       </div>
 

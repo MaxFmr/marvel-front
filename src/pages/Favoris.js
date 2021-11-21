@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Favoris = () => {
-  let obj = JSON.parse(sessionStorage.getItem("favoris"));
+  const obj = JSON.parse(sessionStorage.getItem("favoris"));
 
   return obj ? (
     <div className="container">
