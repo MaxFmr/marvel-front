@@ -5,51 +5,95 @@ const Comics = ({ id }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [searchByName, setSearchByName] = useState("");
-  const [id_, setId] = useState("");
+  const [fav, setFav] = useState([]);
+  const [page, setPage] = useState(1);
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/comics/${id_}?title=${searchByName}`
+          `http://localhost:3000/comics/?title=${searchByName}&skip=${skip}`
         );
         console.log(response.data);
         setData(response.data);
-        setId(id);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchData();
-  }, [id, searchByName]);
+  }, [skip, searchByName]);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
     <>
-      <input
-        type="text"
-        onChange={(event) => setSearchByName(event.target.value)}
-        placeholder="recherche"
-      />
+      <div className="search-bar">
+        <input
+          type="text"
+          onChange={(event) => setSearchByName(event.target.value)}
+          placeholder="Recherchez votre héro Marvel préféré !"
+        />
+      </div>
+
       <div className="container">
         {data.results.map((comics, index) => {
           return (
-            <>
-              {console.log(comics)}
-              <div key={index} className="card">
-                <h3>{comics.title}</h3>
+            <div key={index} className="card">
+              <button
+                className="favoris-button"
+                onClick={() => {
+                  const newTab = [...fav];
+                  // modification de la copie
+                  newTab.push(comics);
+                  // mise à jour du state avec la copie
+                  setFav(newTab);
+                  sessionStorage.setItem("favoris", JSON.stringify(fav));
+                }}
+              >
+                Ajouter aux favoris
+              </button>
+              <h3>{comics.title}</h3>
 
-                <img
-                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-                  alt=""
-                />
-              </div>
-            </>
+              <img
+                src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                alt=""
+              />
+
+              <p>{comics.description}</p>
+            </div>
           );
         })}
       </div>
+      <footer className="paginate">
+        {skip > 0 ? (
+          <button
+            onClick={() => {
+              setSkip(skip - 100);
+              setPage(page - 1);
+            }}
+          >
+            page précédente
+          </button>
+        ) : (
+          <div></div>
+        )}
+        <div className="counter">{page}</div>
+
+        {page <= 15 ? (
+          <button
+            onClick={() => {
+              setSkip(skip + 100);
+              setPage(page + 1);
+            }}
+          >
+            page suivante
+          </button>
+        ) : (
+          <div></div>
+        )}
+      </footer>
     </>
   );
 };

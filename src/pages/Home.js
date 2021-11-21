@@ -83,7 +83,7 @@ const Home = ({ favoris }) => {
         ) : (
           <div></div>
         )}
-        <div>{page}</div>
+        <div className="counter">{page}</div>
 
         {page <= 15 ? (
           <button
