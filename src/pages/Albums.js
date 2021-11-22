@@ -28,7 +28,11 @@ const Albums = () => {
   ) : (
     <div>
       {data.comics.map((comics, index) => {
-        return <div key={index}>{comics.title}</div>;
+        return (
+          <div className="albums" key={index}>
+            {comics.title}
+          </div>
+        );
       })}
     </div>
   );
